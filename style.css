@@ -23,6 +23,8 @@ main{
 }
 #graph{
     flex:7;
+    border:red solid;
+    
 
 
 }

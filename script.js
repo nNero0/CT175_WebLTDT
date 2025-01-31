@@ -141,6 +141,13 @@ for (let i = 0; i < textareas.length; i++) {
   });
 }
 
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min) + min);
+} // Example: random number between 1 and 9
+
+
 
 
 function addNewDirectedNode() {
@@ -153,6 +160,9 @@ function addNewDirectedNode() {
   let first;
   let sec;
   let temp;
+  let PosX;
+  let PosY;
+
   for(let i =1;i< VerMatrix.length;i++ ){
     for(let j =1;j< VerMatrix.length;j++){
       if( VerMatrix[i][j]>0){
@@ -161,13 +171,19 @@ function addNewDirectedNode() {
           first = i;
           sec = j;
           if (!NodeExist(cy, first)) {
+            PosX= getRandomInt(0,200);
+            PosY = getRandomInt(0,200);
             cy.add({
               data: { id: first },
+              position: {x : PosX,y : PosY},
             });
           }
           if (!NodeExist(cy, sec)) {
+            PosX= getRandomInt(0,200);
+            PosY = getRandomInt(0,200);
             cy.add({
               data: { id: sec },
+              position: {x : PosX,y : PosY},
             });
       
           }
@@ -196,6 +212,9 @@ function NodeExist(graph, id) {
   }
   return false;
 }
+
+
+
 
 
 // const TypingInterval = 2000;
