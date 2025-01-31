@@ -14,6 +14,10 @@ let PrevGraphData="";
 
 let DiffGraphData="";
 
+let isDirected = true;
+
+
+
 const addBtn = document.getElementById("ADDNEW");
 addBtn.addEventListener('click', ()=>{
   GraphData = document.getElementById("graph-data").value.split(/[\n\s]+/);
@@ -102,7 +106,7 @@ var cy = cytoscape({
       selector: "edge",
       style: {
         "curve-style": "bezier",
-        "target-arrow-shape": "triangle",
+        "target-arrow-shape": isDirected ? "triangle" : "none",
       },
     },
   ],
@@ -194,6 +198,7 @@ function addNewDirectedNode() {
               source: first,
               target: sec,
             },
+            classes : isDirected ? 'directed' :''
           });
 
       } 
@@ -213,7 +218,20 @@ function NodeExist(graph, id) {
   return false;
 }
 
+function toggleDirected(){
+  isDirected = !isDirected;
+  console.log("run");
+  cy.edges().forEach(edge => {
+    edge.style(
+      "target-arrow-shape" , isDirected ? "triangle" : "none"
+    );
+    
+  });
+}
 
+
+const toggleBtn = document.getElementById( "SwitchDirectedUndirected");
+toggleBtn.addEventListener('click',()=>{  toggleDirected()} );
 
 
 
