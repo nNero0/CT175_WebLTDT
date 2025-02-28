@@ -1,3 +1,22 @@
+// Define the path to the file you want to read
+// const filePath = 'Testing.txt';
+
+// // Fetch the file content
+// fetch(filePath)
+//     .then(response => {
+//         if (!response.ok) {
+//             throw new Error('Network response was not ok ' + response.statusText);
+//         }
+//         return response.text();
+//     })
+//     .then(data => {
+//         console.log('File content:', data);
+//     })
+//     .catch(error => {
+//         console.error('Error reading the file:', error);
+//     });
+
+
 let VerList = {};
 let EdgeList={};
 
@@ -60,7 +79,7 @@ function initMatrix() {
 }
 
 function ChangeCharToNum(){
-  
+    
 }
 
 
@@ -229,9 +248,35 @@ function toggleDirected(){
   });
 }
 
+function CountNodes(){
+  GraphData = document.getElementById("graph-data").value.split(/[\n\s]+/);
+  let NodeArea = document.getElementById("node_cnt");
+  let cnt =0;
+  cnt=Vertices.length;
+  NodeArea.innerHTML=cnt;
+
+}
 
 const toggleBtn = document.getElementById( "SwitchDirectedUndirected");
-toggleBtn.addEventListener('click',()=>{  toggleDirected()} );
+toggleBtn.addEventListener('click',()=>{  
+
+  toggleDirected()} );
+
+
+var bfs = cy.elements().bfs({
+  roots:'#e',
+  visit:function( v,e,u,i,depth){
+    console.log('visit ' + v.id());
+  },
+  directed :( isDirected ? true: false)
+
+});
+
+
+var path = bfs.path;
+var found = bfs.found;
+
+path.select();
 
 
 
