@@ -4,30 +4,36 @@ body{
     margin:0;
     padding: 0;
     height: 100vh;
+
 }
 
 #div--left-col{
     background-color: gainsboro;
     display: flex;
     gap:8px;
+    padding:6px;
     flex-direction: column;
+
 }
 
 #main--right-col{
     flex:3;
     background-color: gainsboro;
+    justify-content: center;
+
 }
 main{
     display: flex;
-    
+
 }
 #graph{
     flex:7;
-    border:red solid;
+
     
 
 
 }
+
 
 #graph-description{
     flex:6;
@@ -41,6 +47,35 @@ main{
 
 }
 
+.twocol{
+    display:grid;
+    flex-direction: column;
+    gap : 4px;
+
+}
+
+textarea{
+    border-radius: 8px;
+}
+
+#DijkstraStart,#DijkstraEnd{
+    resize: none;
+    
+}
+
+#DijkstraBox{
+    display: grid;
+    grid-template-columns: auto auto ;
+    margin-top: 4px;
+    align-items: center;
+}
+
+p{
+    text-align: center; 
+    
+    margin: 0;
+}
+
 .textarea--left-col{
     padding: 12px;
     box-sizing: border-box;
@@ -52,11 +87,14 @@ main{
     resize:none;
     overflow: hidden;
 
+
 }
 
 #graph-data{
     width: 100%;
     flex:1;
-
+    overflow-y: scroll;
+    height: 100px;
+    resize: none; 
 }
 
